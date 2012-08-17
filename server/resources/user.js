@@ -4,12 +4,16 @@
 module.exports = function(app) {
 
     var users = ['tobi', 'loki', 'jane'];
-
+    var User = GLOBAL.models.User;
 
     // ressources
     return {
         index: function(req, res) {
-            res.send(users);
+            User.findAll().success(function(projects) {
+                debugger
+                var test = JSON.stringify(projects);
+                res.send(test);
+            });
         },
 
         show: function(req, res) {

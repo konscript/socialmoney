@@ -32,10 +32,8 @@ module.exports = function() {
     })
   };
 
-  debugger
-
-  models.User.sync(); // will emit success or failure event
-  models.Transaction.sync(); // will emit success or failure event
+  // create all tables in database if they do not exist
+  db.sync();
 
   return models;
 };
