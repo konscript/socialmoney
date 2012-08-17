@@ -4,7 +4,7 @@
 module.exports = function() {
   var Sequelize = require('sequelize');
 
-  var db = new Sequelize('socialmoneyjs', 'root', 'heyzan', {
+  var db = new Sequelize('socialmoneyjs', 'root', 'root', {
       host: "localhost",
       port: 3306
   });
@@ -32,10 +32,8 @@ module.exports = function() {
     })
   };
 
-  debugger
-
-  models.User.sync(); // will emit success or failure event
-  models.Transaction.sync(); // will emit success or failure event
+  // create all tables in database if they do not exist
+  db.sync();
 
   return models;
 };
