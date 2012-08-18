@@ -3,16 +3,33 @@
  */
 module.exports = function(app) {
 
-    var users = ['tobi', 'loki', 'jane'];
     var User = GLOBAL.models.User;
+    debugger
 
     // ressources
     return {
         index: function(req, res) {
-            User.findAll().success(function(projects) {
-                debugger
-                var test = JSON.stringify(projects);
-                res.send(test);
+            User.findAll().success(function(user) {
+                res.send("test");
+            });
+        },
+
+        'new': function(req, res) {
+            // serv a view
+        },
+
+        create: function(req, res) {
+            var post = req.body;
+
+            var user = User.build({
+                username: 'some user',
+                password: 'secret123'
+            });
+
+            user.save().success(function(){
+                res.send("yubii");
+            }).error(function(error) {
+                res.send("error" + error);
             });
         },
 

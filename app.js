@@ -47,8 +47,11 @@ app.configure('production', function() {
     app.use(express.errorHandler());
 });
 
+// database
+GLOBAL.db = require('./server/database.js')();
+
 // models
-GLOBAL.models = require('./server/models.js')(GLOBAL.db);
+GLOBAL.models = require('./server/models.js')();
 
 // routes
 require('./server/routes.js')(app);
