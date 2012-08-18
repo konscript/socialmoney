@@ -10,7 +10,7 @@ var users = {};
     
     users.Users = Backbone.Collection.extend({
         model: users.User,
-        url: "users.json"
+        url: "users"
     });
     
     users.UserListView = Backbone.View.extend({

@@ -2,6 +2,7 @@
 var express = require('express');
 var resource = require('express-resource');
 var app = express();
+var _ = require("underscore");
 
 /**
 * app
