@@ -2,38 +2,39 @@
  * Sequelize ORM Models
  */
 module.exports = function() {
-  var Sequelize = require('sequelize');
 
-  var db = new Sequelize('socialmoneyjs', 'root', 'heyzan', {
-      host: "localhost",
-      port: 3306
-  });
+  var instance = GLOBAL.db.instance;
+  var Sequelize = GLOBAL.db.Sequelize;
 
   var models = {
-     'User': db.define('User', {
-      id: Sequelize.INTEGER,
-      username: Sequelize.STRING,
-      password: Sequelize.STRING,
-      email: Sequelize.STRING
+     'User': instance.define('User', {
+      id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
+      facebook_id: Sequelize.INTEGER,
+      email: Sequelize.STRING,
+      first_name: Sequelize.STRING,
+      last_name: Sequelize.STRING
     }),
      
-    'Transaction': db.define('Transaction', {
-      id: Sequelize.INTEGER,
+    'Transaction': instance.define('Transaction', {
+      id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
       title: Sequelize.STRING,
       description: Sequelize.TEXT,
-      date: Sequelize.DATE
+      date: { type: Sequelize.DATE, defaultValue: Sequelize.NOW }
     }),
      
-    'SubTransaction': db.define('SubTransaction', {
-      id: Sequelize.INTEGER,
+    'SubTransaction': instance.define('SubTransaction', {
+      id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
       amount: Sequelize.STRING,
       from_id: Sequelize.INTEGER,
       to_id: Sequelize.INTEGER
     })
   };
 
+  // setup relations
+  models.User.hasOne(models.Transaction);
+
   // create all tables in database if they do not exist
-  db.sync();
+  instance.sync();
 
   return models;
 };
