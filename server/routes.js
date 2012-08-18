@@ -1,10 +1,19 @@
 /**
  * Resource Routes
  */
-module.exports = function(app) {
+module.exports = {
 
-  //app.get('/users/login', user.login);
-  var user = require('./resources/user')(app);
-  var userResource = app.resource('users', user);
+  init: function(){
+    this.users();
+    this.home();
+  },
+
+  users: function(){
+    app.resource('users',GLOBAL.resources.user);
+  },
+
+  home: function(){
+    app.resource(GLOBAL.resources.home);
+  }
 
 };

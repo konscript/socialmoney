@@ -1,45 +1,41 @@
 /**
  * Resource Routes
  */
-module.exports = function(app) {
+module.exports = {
 
-    var users = ['tobi', 'loki', 'jane'];
-    var User = GLOBAL.models.User;
+  User: GLOBAL.models.User,
+  users: ['tobi', 'loki', 'jane'],
 
-    // ressources
-    return {
-        index: function(req, res) {
-            User.findAll().success(function(projects) {
-                debugger
-                var test = JSON.stringify(projects);
-                res.send(test);
-            });
-        },
+  index: function(req, res) {
+    this.User.findAll().success(function(projects) {
+      var test = JSON.stringify(projects);
+      res.send(test);
+    });
+  },
 
-        show: function(req, res) {
-            var user = users[req.params.user];
-            res.send(user);
-        },
+  show: function(req, res) {
+    var user = this.users[req.params.user];
+    res.send(user);
+  },
 
-        edit: function(req, res) {
-            res.send('editing ' + req.params.user);
-        },
+  edit: function(req, res) {
+    res.send('editing ' + req.params.user);
+  },
 
-        update: function(req, res) {
-            res.send('updating ' + req.params.user);
-        },
+  update: function(req, res) {
+    res.send('updating ' + req.params.user);
+  },
 
-        destroy: function(req, res) {
-            delete users[req.params.user];
-            res.send('removed ' + req.params.user);
-        },
+  destroy: function(req, res) {
+    delete users[req.params.user];
+    res.send('removed ' + req.params.user);
+  },
 
-        login: function(req, res) {
-            res.send('logged in ' + req.params.user);
-        },
+  login: function(req, res) {
+    res.send('logged in ' + req.params.user);
+  },
 
-        logout: function(req, res) {
-            res.send('logged out');
-        }
-    };
+  logout: function(req, res) {
+    res.send('logged out');
+  }
 };
