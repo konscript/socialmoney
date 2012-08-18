@@ -51,10 +51,15 @@ app.configure('production', function() {
 GLOBAL.db = require('./server/database.js')();
 
 // models
-GLOBAL.models = require('./server/models.js')();
+GLOBAL.models = require('./server/models.js').init();
+
+// resources
+GLOBAL.resources = {};
+GLOBAL.resources.home = require('./server/resources/home.js');
+GLOBAL.resources.user = require('./server/resources/user.js');
 
 // routes
-require('./server/routes.js')(app);
+GLOBAL.routes = require('./server/routes.js').init();
 
 // HTTP Server
 app.listen(port);
