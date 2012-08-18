@@ -5,7 +5,7 @@ module.exports = {
 
   init: function(){
 
-  	// users
+    // users
     app.resource('users',GLOBAL.resources.user);
   }
 
