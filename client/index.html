@@ -5,21 +5,25 @@
 	<title>SocialMoney Client</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
-	<script src="assets/js/libs/jquery-1.7.2.min.js"></script>
-	<script src="assets/js/libs/jquery.mobile-1.2.0-alpha.1.min.js"></script>
-	<script src="assets/js/libs/facebook-user/src/FacebookUser.js"></script>
-	<script src="assets/js/libs/backbone.js"></script>
-	<script src="assets/js/app.js"></script>
-	<script>
-	// Load the SDK Asynchronously
-	(function(d){
-	   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-	   if (d.getElementById(id)) {return;}
-	   js = d.createElement('script'); js.id = id; js.async = true;
-	   js.src = "//connect.facebook.net/en_US/all.js";
-	   ref.parentNode.insertBefore(js, ref);
-	 }(document));
-	</script>	
+
+	<!-- Libraries -->
+	<script src="js/libs/jquery-1.7.2.min.js"></script>
+	<script src="js/jqm-config.js"></script>
+	<script src="js/libs/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+	<script src="js/libs/underscore-min.js"></script>
+	<script src="js/libs/backbone-min.js"></script>
+	<script src="js/libs/facebook-user/src/FacebookUser.js"></script>
+	<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+
+	<!-- App scripts -->
+	<script src="js/app.js"></script>
+
+	<!-- Templates -->
+	<script type="text/template" id="users-list-item-template">    
+	  <li><a href="#user-details" identifier="<%= id %>"><%= name %></a><span class="ui-li-count"><%= balance %> kr.</span></li>
+	</script>
+	<!-- /Templates -->
+
 </head> 
 <body> 
 
@@ -33,19 +37,13 @@
 			</span>
 		</a>
 		<h1>SocialMoney</h1>
+		<a href="#" data-role="button" data-icon="add" id="add-button">Add</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
 
-		<ul data-role="listview" data-inset="true" data-filter="false">
-			<li data-role="list-divider">Friends</li>
-			<li><a href="#">Lasse</a></li>
-			<li><a href="#">Søren</a></li>
-			<li><a href="#">Vanja</a></li>
-		</ul>
-		<br><br>
+		<!-- The list view will be rendered here -->
 		<a href="#" data-role="button" data-icon="plus" data-theme="a">Add new transaction</a>	
-
 
 	</div><!-- /content -->
 
