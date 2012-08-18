@@ -9,9 +9,8 @@ module.exports = {
   index: function(req, res) {
     User.findAll().success(function(users) {
       for (var i in users) {
-        console.log(users[i]);
+        res.send(users[i]['first_name']);
       }
-    //res.send(user);
     });
   },
 
