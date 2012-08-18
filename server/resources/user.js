@@ -1,62 +1,62 @@
 /**
  * Resource Routes
  */
-module.exports = function(app) {
 
-    var User = GLOBAL.models.User;
-    debugger
+var User = GLOBAL.models.User;
 
-    // ressources
-    return {
-        index: function(req, res) {
-            User.findAll().success(function(user) {
-                res.send("test");
-            });
-        },
+module.exports = {
 
-        'new': function(req, res) {
-            // serv a view
-        },
+  index: function(req, res) {
+    User.findAll().success(function(users) {
+      for (var i in users) {
+        console.log(users[i]);
+      }
+    //res.send(user);
+    });
+  },
 
-        create: function(req, res) {
-            var post = req.body;
+  'new': function(req, res) {
+    // serv a view
+  },
 
-            var user = User.build({
-                username: 'some user',
-                password: 'secret123'
-            });
+  create: function(req, res) {
+    var post = req.body;
 
-            user.save().success(function(){
-                res.send("yubii");
-            }).error(function(error) {
-                res.send("error" + error);
-            });
-        },
+    var user = this.User.build({
+        username: 'some user',
+        password: 'secret123'
+    });
 
-        show: function(req, res) {
-            var user = users[req.params.user];
-            res.send(user);
-        },
+    user.save().success(function() {
+        res.send("yubii");
+    }).error(function(error) {
+        res.send("error" + error);
+    });
+  },
 
-        edit: function(req, res) {
-            res.send('editing ' + req.params.user);
-        },
+  show: function(req, res) {
+    var user = this.users[req.params.user];
+    res.send(user);
+  },
 
-        update: function(req, res) {
-            res.send('updating ' + req.params.user);
-        },
+  edit: function(req, res) {
+    res.send('editing ' + req.params.user);
+  },
 
-        destroy: function(req, res) {
-            delete users[req.params.user];
-            res.send('removed ' + req.params.user);
-        },
+  update: function(req, res) {
+    res.send('updating ' + req.params.user);
+  },
 
-        login: function(req, res) {
-            res.send('logged in ' + req.params.user);
-        },
+  destroy: function(req, res) {
+    delete users[req.params.user];
+    res.send('removed ' + req.params.user);
+  },
 
-        logout: function(req, res) {
-            res.send('logged out');
-        }
-    };
+  login: function(req, res) {
+    res.send('logged in ' + req.params.user);
+  },
+
+  logout: function(req, res) {
+    res.send('logged out');
+  }
 };

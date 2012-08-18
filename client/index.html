@@ -7,32 +7,74 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
 	<script src="assets/js/libs/jquery-1.7.2.min.js"></script>
 	<script src="assets/js/libs/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+	<script src="assets/js/libs/facebook-user/src/FacebookUser.js"></script>
+	<script src="assets/js/libs/backbone.js"></script>
+	<script src="assets/js/app.js"></script>
+	<script>
+	// Load the SDK Asynchronously
+	(function(d){
+	   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	   if (d.getElementById(id)) {return;}
+	   js = d.createElement('script'); js.id = id; js.async = true;
+	   js.src = "//connect.facebook.net/en_US/all.js";
+	   ref.parentNode.insertBefore(js, ref);
+	 }(document));
+	</script>	
 </head> 
 <body> 
 
-<div data-role="page">
+<!-- Start of page Home -->
+<div data-role="page" id="home">
 
 	<div data-role="header">
-		<h1>Social Money</h1>
+		<a href="#about" data-role="button" data-icon="info" data-rel="dialog" data-transition="pop" data-corners="true" data-shadow="true" data-wrapperels="span" data-theme="a" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-left ui-btn-up-a">
+			<span class="ui-btn-inner ui-btn-corner-all">
+				<span class="ui-btn-text">About</span>
+			</span>
+		</a>
+		<h1>SocialMoney</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<p>Hello world</p>	
 
 		<ul data-role="listview" data-inset="true" data-filter="false">
+			<li data-role="list-divider">Friends</li>
 			<li><a href="#">Lasse</a></li>
 			<li><a href="#">Søren</a></li>
 			<li><a href="#">Vanja</a></li>
 		</ul>
+		<br><br>
+		<a href="#" data-role="button" data-icon="plus" data-theme="a">Add new transaction</a>	
 
-		<a href="#" data-role="button" data-icon="star" data-theme="a">Awesome!</a>	
+
 	</div><!-- /content -->
 
+</div><!-- /page -->
 
 
+<!-- Start of page About-->
+<div data-role="page" id="about">
 
+	<div data-role="header">
+		<h1>About</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+
+		<p>Alpha version of Social Money.</p>
+		<p>Built by <a href="http://konscript.com">Konscript</a>.</p>
+
+		<a href="#home" data-rel="back" data-role="button" data-inline="true" data-icon="back" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="d" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-icon-left ui-btn-up-d" data-transition="pop" data-direction="reverse">
+			<span class="ui-btn-inner ui-btn-corner-all">
+				<span class="ui-btn-text">Close</span>
+				<span class="ui-icon ui-icon-back ui-icon-shadow">&nbsp;</span>
+			</span>
+		</a>
+
+	</div><!-- /content -->
 
 </div><!-- /page -->
+
 
 </body>
 </html>
