@@ -28,7 +28,7 @@ module.exports = {
       'SubTransaction': instance.define('SubTransaction', {
         id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
         amount: Sequelize.STRING,
-        from_id: Sequelize.INTEGER,
+        from_id: {type: Sequelize.INTEGER},
         to_id: Sequelize.INTEGER
       })
     };

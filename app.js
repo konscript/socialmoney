@@ -32,6 +32,11 @@ app.configure(function() {
     app.use(express.logger());
     app.use(express.bodyParser());
     app.use(express.cookieParser());
+
+    // session handling in memorystore
+    var MemoryStore = require('connect').session.MemoryStore;
+    app.use(express.session({ secret: "verySecret!", store: new MemoryStore({ reapInterval:  60000 * 10 })}));
+
     app.use(express.methodOverride());
     app.use(app.router);
     app.use("/", express.static(__dirname + '/client'));
