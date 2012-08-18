@@ -34,7 +34,7 @@ app.configure(function() {
     app.use(express.cookieParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    app.use("/",express.static(__dirname + '/client'));
+    app.use("/", express.static(__dirname + '/client'));
 });
 
 app.configure('development', function() {
