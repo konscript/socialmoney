@@ -2,15 +2,17 @@
  * Resource Routes
  */
 
+_ = require("underscore");
+
 var User = GLOBAL.models.User;
 
 module.exports = {
 
   index: function(req, res) {
     User.findAll().success(function(users) {
-      for (var i in users) {
-        res.send(users[i]['first_name']);
-      }
+      _.each(users, function(user, key){
+        res.send(user['first_name']);
+      });
     });
   },
 

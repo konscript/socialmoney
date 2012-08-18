@@ -29,15 +29,14 @@ var port = args[2] ? args[2] : 3000;
 
 // Configuration
 app.configure(function() {
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
     app.use(express.logger());
 
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
     app.use(app.router);
-    app.use(express.static(__dirname + '/public'));
+    //app.use(express.static(__dirname + '/public'));
+    app.use("/", express.static(__dirname + '/client'));
 });
 
 app.configure('development', function() {
