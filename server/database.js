@@ -2,7 +2,7 @@ module.exports = function() {
 
   var Sequelize = require('sequelize');
 
-  var instance = new Sequelize('socialmoneyjs', 'root', 'heyzan', {
+  var instance = new Sequelize('socialmoneyjs', 'root', 'root', {
       host: "localhost",
       port: 3306
   });
