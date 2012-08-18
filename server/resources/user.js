@@ -22,14 +22,10 @@ module.exports = {
 
   create: function(req, res) {
     var post = req.body;
+    var allowedFields = ['facebook_id'];
 
-    var user = this.User.build({
-        username: 'some user',
-        password: 'secret123'
-    });
-
-    user.save().success(function() {
-        res.send("yubii");
+    User.create(post, allowedFields).success(function(user) {
+      res.send(user);
     }).error(function(error) {
         res.send("error" + error);
     });
@@ -41,11 +37,16 @@ module.exports = {
   },
 
   edit: function(req, res) {
-    res.send('editing ' + req.params.user);
+    // serve a view
   },
 
   update: function(req, res) {
-    res.send('updating ' + req.params.user);
+    var allowedFields = ['email'];
+
+    user.email = req.params.email;
+    user.save(allowedFields).success(function() {
+      res.send('updated');
+    });
   },
 
   destroy: function(req, res) {
@@ -54,10 +55,13 @@ module.exports = {
   },
 
   login: function(req, res) {
-    res.send('logged in ' + req.params.user);
+    // set session - test
+    req.session.user_id = req.params.id;
+    console.log(req.session);
+    res.send("done");
   },
 
   logout: function(req, res) {
-    res.send('logged out');
+    res.send(req.session.user_id);
   }
 };
