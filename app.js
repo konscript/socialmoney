@@ -3,6 +3,7 @@ var express = require('express');
 var resource = require('express-resource');
 var app = express();
 var _ = require("underscore");
+var path = require('path');
 
 /**
 * app
@@ -28,6 +29,28 @@ var args = process.argv;
 */
 var port = args[2] ? args[2] : 3000;
 
+var checkAuth = function(req, res, next) {
+    console.log(path.extname(req.url));
+
+    var publicRoutes = [
+        '/users/login',
+        '/'
+    ];
+
+    var publicExt = [
+        ".css",
+        ".js"
+    ];
+
+    // access granted if session id availbable OR route is public OR extension is allowed
+    if( req.session.user_id || _.include(publicRoutes, req.url) || _.include(publicExt, path.extname(req.url)) ){
+        next();
+    } else {
+        res.statusCode = 403;
+        res.json({status: "not logged in"});
+    }
+};
+
 // Configuration
 app.configure(function() {
     app.use(express.logger());
@@ -38,8 +61,13 @@ app.configure(function() {
     var MemoryStore = require('connect').session.MemoryStore;
     app.use(express.session({ secret: "verySecret!", store: new MemoryStore({ reapInterval:  60000 * 10 })}));
 
+    // check login state before routing
+    app.use(checkAuth);
+
     app.use(express.methodOverride());
     app.use(app.router);
+
+    // set static routes
     app.use("/", express.static(__dirname + '/client'));
 });
 
@@ -59,6 +87,8 @@ GLOBAL.models = require('./server/models.js').init();
 // resources
 GLOBAL.resources = {};
 GLOBAL.resources.user = require('./server/resources/user.js');
+GLOBAL.resources.transaction = require('./server/resources/transaction.js');
+
 
 // routes
 GLOBAL.routes = require('./server/routes.js').init();
