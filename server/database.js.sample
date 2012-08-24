@@ -1,0 +1,19 @@
+module.exports = function() {
+
+  var Sequelize = require('sequelize');
+
+  GLOBAL.fb = {};
+  GLOBAL.fb.app_id = '151681881541064';
+  GLOBAL.fb.secret = "ced9f215768727d6bb10eefcc11ba5de";
+
+  var instance = new Sequelize('socialmoneyjs', 'root', 'root', {
+      host: "localhost",
+      port: 3306
+  });
+
+  var db = {};
+  db.instance = instance;
+  db.Sequelize = Sequelize;
+
+  return db;
+};

@@ -32,6 +32,7 @@ var port = args[2] ? args[2] : 3000;
 var checkAuth = function(req, res, next) {
     console.log(path.extname(req.url));
 
+    // TODO: make all static files publicly available. Below is a lame fix.
     var publicRoutes = [
         '/users/login',
         '/'
@@ -39,7 +40,8 @@ var checkAuth = function(req, res, next) {
 
     var publicExt = [
         ".css",
-        ".js"
+        ".js",
+        ".html"
     ];
 
     // access granted if session id availbable OR route is public OR extension is allowed
@@ -47,7 +49,7 @@ var checkAuth = function(req, res, next) {
         next();
     } else {
         res.statusCode = 403;
-        res.json({status: "not logged in"});
+        res.json({status: "not logged in", session: req.session});
     }
 };
 

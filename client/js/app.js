@@ -67,25 +67,50 @@ $('#add-button').live('click', function(){
     users.users.add({id: 6, name: 'Linus Torvalds', balance: '96'});
 });
 
+// login button
+$('#login-button').live('click', function(){
+    FB.login(function(response) {}, {scope: 'email'});
+});
 
-// Facebook Async Init
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : 'YOUR_APP_ID', // App ID
-    channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
-    status     : true, // check login status
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
-  // Additional initialization code here
+// user logged in
+var onLoginStatusChange = function(auth){
+    console.log("Logging in...");
+
+    if (auth.authResponse) {
+        FB.api('/me', function(user) {
+
+            $.ajax({
+              url: '/users/login',
+              type: "POST",
+              data: {signedRequest : auth.authResponse.signedRequest, user: user},
+              dataType: "json"
+            });
+
+            console.log('Velkommen, ' + user.name + '.');
+        });
+    } else {
+        console.log('User cancelled login or did not fully authorize.');
+    }
 };
 
-user = new FacebookUser();
+// FB SDK loaded
+window.fbAsyncInit = function() {
+    console.log("Facebook loaded");
+    FB.init({
+        appId      : '151681881541064',
+        cookie     : true,
+        channelUrl : 'http://socialmoney.com:3000/js/channel.html'
+    });
 
-// callback example:
-// callback = function(model, response) {}
-// user.on('facebook:connected',    callback);
-// user.on('facebook:disconnected', callback);
-// user.on('facebook:unauthorized', callback);
-// user.login();
-// user.fetch();
+    // listen for events
+    FB.Event.subscribe('auth.authResponseChange', onLoginStatusChange);
+};
+
+// Load the SDK Asynchronously
+(function(d){
+ var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement('script'); js.id = id; js.async = true;
+ js.src = "//connect.facebook.net/en_US/all.js";
+ ref.parentNode.insertBefore(js, ref);
+}(document));

@@ -1,3 +1,5 @@
+var https = require("https");
+
 /**
  * Resource Routes
  */
@@ -9,7 +11,7 @@ var User = GLOBAL.models.User;
 // GET: req.query
 // POST: req.body
 
-UserResource = {
+var userResource = {
 
   index: function(req, res) {
     User.findAll().success(function(users) {
@@ -19,12 +21,12 @@ UserResource = {
 
   create: function(req, res) {
     var data = req.body;
-    var allowedFields = ['facebook_id', 'email', 'first_name', 'last_name'];
+    var allowedFields = ['id', 'email', 'firstName', 'lastName'];
 
     User.create(data, allowedFields).success(function(user) {
-      res.send(user);
+      res.json({user: user});
     }).error(function(error) {
-        res.send("error" + error);
+      res.json({error: error}, 403);
     });
   },
 
@@ -38,16 +40,49 @@ UserResource = {
   },
 
   login: function(req, res) {
-    // set session - test
-    //req.session.user_id = 2;
-    console.log(req.session);
-    res.send("logged in");
+
+    var FB = require('fb');
+
+    var signedRequestValue = req.body.signedRequest;
+    var appSecret = GLOBAL.fb.secret;
+
+    var signedRequest  = FB.parseSignedRequest(signedRequestValue, appSecret);
+    if(signedRequest) {
+        var user = req.body.user;
+        user.id = signedRequest.user_id;
+        user.firstName = user.first_name;
+        user.lastName = user.last_name;
+        
+        try{
+
+          // create user if he doesn't already exist
+          User.find({where: ["id = ?", user.id]}).success(function(users) {
+            if(users === null){
+              GLOBAL.resources.user.create({body: user}, res);
+            }
+          });
+
+          // set session id
+          req.session.user_id = user.id;
+          res.json({
+            status: 'signed in',
+            // signedRequest: signedRequest, // only for debugging - confidential!
+            user: user
+          });
+
+        }
+        catch(err) {
+          res.json({error: err});
+        }
+
+    }else{
+      res.json({status: 'could not parse signed request', signedRequest: signedRequest});
+    }
   },
 
   logout: function(req, res) {
-    res.send(req.session.user_id);
+    delete req.session.user_id;
   }
 };
 
-//
-module.exports = UserResource;
+module.exports = userResource;
