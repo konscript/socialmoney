@@ -3,8 +3,8 @@ module.exports = function() {
   var Sequelize = require('sequelize');
 
   GLOBAL.fb = {};
-  GLOBAL.fb.app_id = '151681881541064';
-  GLOBAL.fb.secret = "ced9f215768727d6bb10eefcc11ba5de";
+  GLOBAL.fb.app_id = '';
+  GLOBAL.fb.secret = '';
 
   var instance = new Sequelize('socialmoneyjs', 'root', 'root', {
       host: "localhost",
