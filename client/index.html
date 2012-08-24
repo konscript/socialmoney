@@ -8,7 +8,7 @@
 
 	<!-- Libraries -->
 	<script src="js/libs/jquery-1.7.2.min.js"></script>
-	<script src="js/jqm-config.js"></script>
+	<!-- <script src="js/jqm-config.js"></script> -->
 	<script src="js/libs/jquery.mobile-1.2.0-alpha.1.min.js"></script>
 	<script src="js/libs/underscore-min.js"></script>
 	<script src="js/libs/backbone-min.js"></script>
@@ -18,7 +18,16 @@
 
 	<!-- Templates -->
 	<script type="text/template" id="users-list-item-template">    
-	  <li><a href="#user-details" identifier="<%= id %>"><%= firstName + ' ' + lastName %></a><span class="ui-li-count">23 kr.</span></li>
+	  <li><a href="#user-details" identifier="<%= id %>"><%= firstName + ' ' + lastName %></a><span class="ui-li-count">More info</span></li>
+	</script>
+
+	<script type="text/template" id="user-details-template">    
+	    <h3>ID: <%= id %></h3>
+	    <ul data-role="listview" id="user-fields" data-inset="true">
+	      <li>First: <%= firstName %></li>
+	      <li>Last: <%= lastName %></li>
+	      <li>Email: <%= email %></li>
+	    </ul>
 	</script>
 	<!-- /Templates -->
 
@@ -41,7 +50,7 @@
 			</span>
 		</a>
 		<h1>SocialMoney</h1>
-		<a href="#" data-role="button" data-icon="add" id="add-button">Add</a>
+		<!-- <a href="#" data-role="button" data-icon="add" id="add-button">Add</a> -->
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -53,6 +62,14 @@
 
 </div><!-- /page -->
 
+<div data-role="page" id="user-details" data-add-back-btn="true">
+  <div data-role="header">
+    <h1>User Details</h1>
+  </div>
+  <div data-role="content" id="user-details-content">
+      <!-- the contents of the list view will be rendered via the backbone view -->
+  </div>
+</div>
 
 <!-- Start of page About-->
 <div data-role="page" id="about">
