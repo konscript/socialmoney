@@ -1,0 +1,28 @@
+body {
+	font-family: 'Lucida Grande';
+	font-size: 14px;
+}
+
+
+label {
+	display: block;
+	width: 100px;
+	float:left;
+	line-height: 30px;
+}
+
+input {
+	border-radius: 5px;
+	width: 200px;
+	height: 30px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+#totalAmount {
+
+}
+
+#friendPicker {
+
+}
