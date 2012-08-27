@@ -29,17 +29,21 @@ module.exports = {
           findRelatedByUserId: function(user_id, callback) {
             var sql = "SELECT * FROM  SubTransactions LEFT JOIN Transactions ON Transactions.id = SubTransactions.TransactionId WHERE PayerId = "+user_id+" OR BorrowerId = "+user_id;
             instance.query(sql, models.Transaction).success(function(transactions) {
-              console.log(transactions);
               callback(transactions);
             }).error(function(){
-              console.log("ASDKALDADDLA");
-              callback("lort");
+              callback({status: "error"});
             });
           }
         }
       }),
        
       'SubTransaction': instance.define('SubTransaction', {
+        id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
+        amount: {type: Sequelize.INTEGER, validate: {isInt: true, min: 0} },
+        accepted: { type: Sequelize.BOOLEAN, defaultValue: false, validate: {notNull: true} }
+      }),
+
+      'Balance': instance.define('SubTransaction', {
         id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
         amount: {type: Sequelize.INTEGER, validate: {isInt: true, min: 0} },
         accepted: { type: Sequelize.BOOLEAN, defaultValue: false, validate: {notNull: true} }
@@ -55,7 +59,9 @@ module.exports = {
       
       'GroupsUsers': instance.define('GroupsUsers', {
         id: {type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true},
-        accepted: { type: Sequelize.BOOLEAN, defaultValue: false, validate: {notNull: true} }
+        accepted: { type: Sequelize.BOOLEAN, defaultValue: false, validate: {notNull: true} },
+        groupId: {type: Sequelize.INTEGER, validate: {isInt: true}  },
+        userId: {type: Sequelize.INTEGER, validate: {isInt: true}}
       })
       
     };
@@ -64,36 +70,37 @@ module.exports = {
     models.User
       .hasOne(models.SubTransaction, { as: 'Payer', foreignKey: 'payerId' })
       .hasOne(models.SubTransaction, { as: 'Borrower', foreignKey: 'borrowerId' })
-      .hasOne(models.Transaction, {foreignKey: 'createdBy'})
-      .hasMany(models.Group);
+      .hasOne(models.Transaction, {foreignKey: 'createdBy'});
+      // .hasMany(models.Group);
 
     models.Transaction
       .hasMany(models.SubTransaction);
 
-    models.Group
-      .hasMany(models.User);
+    // models.Group
+    //   .hasMany(models.User);
 
       // setup views
-      instance.query("CREATE OR REPLACE VIEW balance_from AS \
+      instance.query("CREATE OR REPLACE VIEW BalanceFrom AS \
       SELECT a.payerId , a.borrowerId, SUM(a.amount) AS balance \
       FROM SubTransactions a \
-      GROUP BY payerId, borrowerId;");
-
-      instance.query("CREATE OR REPLACE VIEW balance_to AS \
+      GROUP BY payerId, borrowerId; \
+      \
+      CREATE OR REPLACE VIEW BalanceTo AS \
       SELECT a.borrowerId as payerId, a.payerId as borrowerId, -SUM(a.amount) AS balance \
       FROM SubTransactions a \
-      GROUP BY payerId, borrowerId;");
-
-      instance.query("CREATE OR REPLACE VIEW balance_union AS \
-      SELECT * FROM balance_from \
+      GROUP BY payerId, borrowerId; \
+      \
+      CREATE OR REPLACE VIEW BalanceUnion AS \
+      SELECT * FROM BalanceFrom \
       UNION \
-      SELECT * FROM balance_to;");
-
-      instance.query("CREATE OR REPLACE VIEW balance AS \
-      SELECT payerId, borrowerId, sum(balance) as balance FROM balance_union GROUP BY payerId, borrowerId;");
+      SELECT * FROM BalanceTo; \
+      \
+      DROP TABLE IF EXISTS Balance; \
+      CREATE OR REPLACE VIEW Balance AS \
+      SELECT payerId, borrowerId, sum(balance) as balance FROM BalanceUnion GROUP BY payerId, borrowerId;");
 
     // create all tables in database if they do not exist
-    instance.sync({force: false});
+    instance.sync({force: true});
 
     return models;
   }

@@ -24,7 +24,7 @@ var userResource = {
     var allowedFields = ['id', 'email', 'firstName', 'lastName'];
 
     User.create(data, allowedFields).success(function(user) {
-      res.json({user: user});
+      //res.json({user: user});
     }).error(function(error) {
       res.json({error: error}, 403);
     });
