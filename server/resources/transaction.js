@@ -20,6 +20,7 @@ var filterAllowedFields = function(allowedFields, model, data){
 // GET: req.query
 // POST: req.body
 
+
 module.exports = {
 
   index: function(req, res) {
@@ -30,7 +31,7 @@ module.exports = {
 
     // // TODO: show all Transactions which is either createdBy user, or has a SubTransaction which has BorrowerId user.
     // Transaction.find({ where: {createdBy: req.session.user_id} }).success(function(transactions) {
-    //   res.send(transactions);
+    //   res.send(transacstions);
     // });
   },
 

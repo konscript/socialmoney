@@ -65,6 +65,7 @@ module.exports = {
       })
       
     };
+    
 
     // Associations
     models.User
@@ -81,7 +82,7 @@ module.exports = {
 
       // setup views
       instance.query("CREATE OR REPLACE VIEW BalanceFrom AS \
-      SELECT a.payerId , a.borrowerId, SUM(a.amount) AS balance \
+      SELECT a.payerId, a.borrowerId, SUM(a.amount) AS balance \
       FROM SubTransactions a \
       GROUP BY payerId, borrowerId; \
       \
@@ -100,7 +101,7 @@ module.exports = {
       SELECT payerId, borrowerId, sum(balance) as balance FROM BalanceUnion GROUP BY payerId, borrowerId;");
 
     // create all tables in database if they do not exist
-    instance.sync({force: true});
+    instance.sync({force: false});
 
     return models;
   }

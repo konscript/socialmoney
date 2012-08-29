@@ -13,6 +13,9 @@ var path = require('path');
 */
 GLOBAL.app = app;
 
+
+
+
 /**
 * Retrieve Command Line Arguments
 * [0] process : String 'node'
