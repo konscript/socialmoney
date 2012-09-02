@@ -15,7 +15,7 @@ var userResource = {
 
   index: function(req, res) {
     User.findAll().success(function(users) {
-      res.send(users);
+      res.json(users);
     });
   },
 
@@ -31,6 +31,9 @@ var userResource = {
   },
 
   show: function(req, res) {
+    User.find(parseInt(req.params.user)).success(function(users) {
+      res.json(users);
+    });
   },
 
   update: function(req, res) {
@@ -82,6 +85,7 @@ var userResource = {
 
   logout: function(req, res) {
     delete req.session.user_id;
+    res.json("logged out");
   }
 };
 

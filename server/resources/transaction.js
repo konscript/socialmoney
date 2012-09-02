@@ -6,6 +6,7 @@
 
 
 var Transaction = GLOBAL.models.Transaction;
+var SubTransaction = GLOBAL.models.SubTransaction;
 
 var filterAllowedFields = function(allowedFields, model, data){
   _.each(allowedFields, function(field) {
@@ -29,27 +30,57 @@ module.exports = {
       res.send(transactions);
     });
 
-    // // TODO: show all Transactions which is either createdBy user, or has a SubTransaction which has BorrowerId user.
-    // Transaction.find({ where: {createdBy: req.session.user_id} }).success(function(transactions) {
-    //   res.send(transacstions);
-    // });
   },
 
   create: function(req, res) {
+
     var data = req.body;
     data.createdBy = req.session.user_id;
-    var allowedFields = ['title', 'description', 'totalAmount', 'createdBy'];
+    var allowedFields = ['title', 'description', 'totalAmount', 'date', 'createdBy'];
 
     Transaction.create(data, allowedFields).success(function(transaction) {
-      res.send(transaction);
+
+      // insert associated data
+      if(data.subtransactions.length > 0){
+        _.each(data.subtransactions, function(subtransaction) {
+          var request = req;
+          request.body = subtransaction;
+          request.body.transactionId = transaction.id;
+          GLOBAL.resources.subtransaction.create(request);
+        });
+        res.send(transaction);
+      }else{
+        res.send(transaction);
+      }
     }).error(function(error) {
         res.send("error" + error);
     });
   },
 
   show: function(req, res) {
-    Transaction.find(parseInt(req.params.transaction, 10)).success(function(transaction) {
-      res.send(transaction);
+    var transactionId = parseInt(req.params.transaction, 10);
+    Transaction.find({
+      where: {
+        id: transactionId
+      }
+    }).success(function(transaction) {
+
+      // count number of subtransactions in transaction that the user can access. Must be at least one to access the transaction
+      SubTransaction.count({
+        where: ['transactionId=? and (borrowerId=? or payerId=?)', transactionId, req.session.user_id, req.session.user_id]
+      }).success(function(numberOfSubTransactions) {
+
+        // Note: If the user can see a single subtransaction, he is allowed to view the entire transactions and all related subtransactions
+        if(numberOfSubTransactions > 0){
+          transaction.getSubTransactions().success(function(subtransactions) {
+            var data = transaction.toJSON();
+            data.subtransactions = subtransactions;
+            res.json(data);
+          });
+        }else{
+          res.json({});
+        }
+      });
     });
   },
 

@@ -5,20 +5,24 @@ module.exports = {
 
   init: function(){
 
+    app.get('/', GLOBAL.resources.mixed.frontpage),
+
     /*
     * USERS
     ********************************/
 
     // additional user routes
-    app.post('/users/login', GLOBAL.resources.user.login);
-    app.get('/users/logout', GLOBAL.resources.user.logout);
+    app.post('/api/users/login', GLOBAL.resources.user.login);
+    app.get('/api/users/logout', GLOBAL.resources.user.logout);
 
-    app.resource('users', GLOBAL.resources.user);
+    app.resource('api/users', GLOBAL.resources.user);
 
     /*
-    * TRANSCTIONS
+    * TRANSACTIONS
     ********************************/
-    app.resource('transactions', GLOBAL.resources.transaction);
+    app.resource('api/transactions', GLOBAL.resources.transaction);
+    app.resource('api/subtransactions', GLOBAL.resources.subtransaction);
+
   }
 
 };

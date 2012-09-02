@@ -825,6 +825,3 @@ INSERT INTO `Users` (`id`, `email`, `firstName`, `lastName`, `createdAt`, `updat
 (9918974, 'cursus.et.magna@Pellentesquehabitant.ca', 'Paloma', 'Boyd', '2012-06-30 17:50:32', '2013-02-28 18:28:53'),
 (9997426, 'ante.lectus@eunulla.edu', 'Veronica', 'Bush', '2013-04-01 00:14:34', '2011-09-01 13:11:14');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

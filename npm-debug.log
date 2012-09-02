@@ -1,0 +1,334 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/bin/npm', 'install', 'jade' ]
+info using npm@1.1.4
+info using node@v0.6.12
+verbose config file /root/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+verbose caching /mnt/hgfs/srv/node/socialmoney/package.json
+verbose loadDefaults social-money@0.0.1
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/btoa-atob/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/connect/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/debug/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/express/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/express-resource/package.json
+verbose loadDefaults express-resource@0.2.4
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/fb/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/lingo/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/methods/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/node-inspector/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/request/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/sequelize/package.json
+verbose caching /mnt/hgfs/srv/node/socialmoney/node_modules/underscore/package.json
+verbose from cache /mnt/hgfs/srv/node/socialmoney/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'jade', null ]
+silly cache add: name, spec, args [ undefined, 'jade', [ 'jade', null ] ]
+verbose parsed url { pathname: 'jade', path: 'jade', href: 'jade' }
+verbose addNamed [ 'jade', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'jade', '', false ]
+verbose raw, before any munging jade
+verbose url resolving [ 'https://registry.npmjs.org/', './jade' ]
+verbose url resolved https://registry.npmjs.org/jade
+verbose etag "62TJQRZ9U1HIE0MSLB39F7JR1"
+http GET https://registry.npmjs.org/jade
+http 200 https://registry.npmjs.org/jade
+silly get cb [ 200,
+silly get cb   { vary: 'Accept',
+silly get cb     server: 'CouchDB/1.2.0 (Erlang OTP/R15B)',
+silly get cb     etag: '"BG1J1K70XTWGVWF6OSCLTDJCA"',
+silly get cb     date: 'Sun, 02 Sep 2012 00:51:06 GMT',
+silly get cb     'content-type': 'application/json',
+silly get cb     'content-length': '64483' } ]
+silly name, range, hasData 2 [ 'jade', '', true ]
+silly versions [ 'jade',
+silly versions   [ '0.0.1',
+silly versions     '0.0.2',
+silly versions     '0.1.0',
+silly versions     '0.2.0',
+silly versions     '0.2.1',
+silly versions     '0.2.2',
+silly versions     '0.2.3',
+silly versions     '0.2.4',
+silly versions     '0.3.0',
+silly versions     '0.4.0',
+silly versions     '0.4.1',
+silly versions     '0.5.0',
+silly versions     '0.5.1',
+silly versions     '0.5.2',
+silly versions     '0.5.3',
+silly versions     '0.5.4',
+silly versions     '0.5.5',
+silly versions     '0.5.6',
+silly versions     '0.5.7',
+silly versions     '0.6.0',
+silly versions     '0.6.1',
+silly versions     '0.6.3',
+silly versions     '0.7.0',
+silly versions     '0.7.1',
+silly versions     '0.8.0',
+silly versions     '0.8.1',
+silly versions     '0.8.2',
+silly versions     '0.8.3',
+silly versions     '0.8.4',
+silly versions     '0.8.5',
+silly versions     '0.8.6',
+silly versions     '0.8.7',
+silly versions     '0.8.8',
+silly versions     '0.8.9',
+silly versions     '0.9.0',
+silly versions     '0.9.1',
+silly versions     '0.9.2',
+silly versions     '0.9.3',
+silly versions     '0.10.0',
+silly versions     '0.10.1',
+silly versions     '0.10.2',
+silly versions     '0.10.3',
+silly versions     '0.10.4',
+silly versions     '0.10.5',
+silly versions     '0.10.6',
+silly versions     '0.10.7',
+silly versions     '0.11.0',
+silly versions     '0.11.1',
+silly versions     '0.12.0',
+silly versions     '0.12.1',
+silly versions     '0.12.2',
+silly versions     '0.12.3',
+silly versions     '0.12.4',
+silly versions     '0.13.0',
+silly versions     '0.14.0',
+silly versions     '0.14.1',
+silly versions     '0.14.2',
+silly versions     '0.15.0',
+silly versions     '0.15.1',
+silly versions     '0.15.2',
+silly versions     '0.15.3',
+silly versions     '0.15.4',
+silly versions     '0.16.0',
+silly versions     '0.16.1',
+silly versions     '0.16.2',
+silly versions     '0.16.3',
+silly versions     '0.16.4',
+silly versions     '0.17.0',
+silly versions     '0.18.0',
+silly versions     '0.19.0',
+silly versions     '0.20.0',
+silly versions     '0.20.1',
+silly versions     '0.20.2',
+silly versions     '0.20.3',
+silly versions     '0.21.0',
+silly versions     '0.22.0',
+silly versions     '0.22.1',
+silly versions     '0.23.0',
+silly versions     '0.24.0',
+silly versions     '0.25.0',
+silly versions     '0.26.0',
+silly versions     '0.26.1',
+silly versions     '0.26.2',
+silly versions     '0.26.3',
+silly versions     '0.27.0',
+silly versions     '0.27.1',
+silly versions     '0.27.2' ] ]
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-29-generic-pae',
+verbose bin dist   { shasum: 'a18b7645246165d4e2c284b7773ec8936ccee557',
+verbose bin dist     tarball: 'http://registry.npmjs.org/jade/-/jade-0.27.2.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/jade/-/jade-0.27.2.tgz',
+verbose addRemoteTarball   'a18b7645246165d4e2c284b7773ec8936ccee557' ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1346547069101'
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1346547069101/1346547069101-0.9201351585797966'
+verbose mkdir done: /tmp/npm-1346547069101/1346547069101-0.9201351585797966 755
+verbose fetch to /tmp/npm-1346547069101/1346547069101-0.9201351585797966/tmp.tgz
+http GET https://registry.npmjs.org/jade/-/jade-0.27.2.tgz
+http 200 https://registry.npmjs.org/jade/-/jade-0.27.2.tgz
+silly updated sha bytes 40960
+silly updated sha bytes 11505
+info shasum a18b7645246165d4e2c284b7773ec8936ccee557
+info shasum /tmp/npm-1346547069101/1346547069101-0.9201351585797966/tmp.tgz
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm'
+verbose mkdir done: /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm 755
+verbose unpack_ uid, gid [ 0, 0 ]
+verbose unpackTarget /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar ok
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/.npmignore
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/jade.md
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/test.jade
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/index.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/runtime.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/runtime.min.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/jade.min.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/package.json
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/LICENSE
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/jade.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/bin
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/bin/jade
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing/user.jade
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing/index.jade
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing/head.jade
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing/layout.jade
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing/index.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/testing/user.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/doctypes.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/lexer.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/inline-tags.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/compiler.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/utils.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/runtime.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/self-closing.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/parser.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/filters.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/jade.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/node.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/attrs.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/block.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/comment.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/filter.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/each.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/text.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/code.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/mixin.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/index.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/case.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/literal.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/tag.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/block-comment.js
+silly asyncMap in gTP /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package/lib/nodes/doctype.js
+verbose gunzed /tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package
+verbose rm'ed /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package
+verbose renamed [ '/tmp/npm-1346547069101/1346547069101-0.9201351585797966/___package.npm/package',
+verbose renamed   '/tmp/npm-1346547069101/1346547069101-0.9201351585797966/package' ]
+verbose caching /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package/package.json
+verbose loadDefaults jade@0.27.2
+verbose tarball contents [ 'package', 'tmp.tgz' ]
+verbose from cache /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package/package.json
+verbose pack /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package
+verbose pack /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package /root/.npm/jade/0.27.2/package.tgz
+silly makeList /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package
+silly dir, dirLen [ '/tmp/npm-1346547069101/1346547069101-0.9201351585797966/package',
+silly dir, dirLen   64 ]
+verbose tarball /root/.npm/jade/0.27.2/package.tgz
+verbose parent /tmp/npm-1346547069101/1346547069101-0.9201351585797966/package
+verbose mkdir (expected) error ENOENT, no such file or directory '/root/.npm/jade/0.27.2/___package.npm'
+verbose mkdir done: /root/.npm/jade/0.27.2/___package.npm 755
+verbose unpack_ uid, gid [ 0, 0 ]
+verbose unpackTarget /root/.npm/jade/0.27.2/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar ok
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/.npmignore
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/jade.md
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/test.jade
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/index.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/runtime.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/runtime.min.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/jade.min.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/package.json
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/LICENSE
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/jade.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/bin
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/bin/jade
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing/user.jade
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing/index.jade
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing/head.jade
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing/layout.jade
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing/index.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/testing/user.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/doctypes.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/lexer.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/inline-tags.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/compiler.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/utils.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/runtime.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/self-closing.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/parser.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/filters.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/jade.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/node.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/attrs.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/block.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/comment.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/filter.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/each.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/text.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/code.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/mixin.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/index.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/case.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/literal.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/tag.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/block-comment.js
+silly asyncMap in gTP /root/.npm/jade/0.27.2/___package.npm/package/lib/nodes/doctype.js
+verbose gunzed /root/.npm/jade/0.27.2/___package.npm/package
+verbose rm'ed /root/.npm/jade/0.27.2/package
+verbose renamed [ '/root/.npm/jade/0.27.2/___package.npm/package',
+verbose renamed   '/root/.npm/jade/0.27.2/package' ]
+verbose caching /root/.npm/jade/0.27.2/package/package.json
+verbose loadDefaults jade@0.27.2
+silly updated sha bytes 40960
+silly updated sha bytes 12124
+info shasum f59f8c3353d6f8be5311fedaf075ef33881ad356
+info shasum /root/.npm/jade/0.27.2/package.tgz
+verbose from cache /root/.npm/jade/0.27.2/package/package.json
+verbose chmod /root/.npm/jade/0.27.2/package.tgz 644
+verbose chown [ '/root/.npm/jade/0.27.2/package.tgz', 0, 0 ]
+silly resolved [ { name: 'jade',
+silly resolved     description: 'Jade template engine',
+silly resolved     version: '0.27.2',
+silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/jade.git' },
+silly resolved     main: './index.js',
+silly resolved     bin: { jade: './bin/jade' },
+silly resolved     man: [ './jade.1' ],
+silly resolved     dependencies: { commander: '0.6.1', mkdirp: '0.3.0' },
+silly resolved     devDependencies: 
+silly resolved      { mocha: '*',
+silly resolved        markdown: '*',
+silly resolved        stylus: '*',
+silly resolved        uubench: '*',
+silly resolved        should: '*',
+silly resolved        less: '*',
+silly resolved        'uglify-js': '*' },
+silly resolved     component: { scripts: { jade: 'runtime.js' } },
+silly resolved     scripts: { prepublish: 'npm prune' },
+silly resolved     _id: 'jade@0.27.2',
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: 'f59f8c3353d6f8be5311fedaf075ef33881ad356' },
+silly resolved     _from: 'jade' } ]
+info into /mnt/hgfs/srv/node/socialmoney jade@0.27.2
+info installOne jade@0.27.2
+verbose from cache /root/.npm/jade/0.27.2/package/package.json
+info unbuild /mnt/hgfs/srv/node/socialmoney/node_modules/jade
+verbose mkdir (expected) error ENOENT, no such file or directory '/mnt/hgfs/srv/node/socialmoney/node_modules/___jade.npm'
+verbose unpack_ uid, gid [ 1000, 1000 ]
+verbose unpackTarget /mnt/hgfs/srv/node/socialmoney/node_modules/jade
+ERR! Could not create /mnt/hgfs/srv/node/socialmoney/node_modules/___jade.npm
+ERR! error installing jade@0.27.2
+info unbuild /mnt/hgfs/srv/node/socialmoney/node_modules/jade
+verbose installOne cb jade@0.27.2
+ERR! Error: EPERM, operation not permitted '/mnt/hgfs/srv/node/socialmoney/node_modules/___jade.npm'
+ERR! 
+ERR! Please try running this command again as root/Administrator.
+ERR! 
+ERR! System Linux 3.2.0-29-generic-pae
+ERR! command "node" "/usr/bin/npm" "install" "jade"
+ERR! cwd /mnt/hgfs/srv/node/socialmoney
+ERR! node -v v0.6.12
+ERR! npm -v 1.1.4
+ERR! path /mnt/hgfs/srv/node/socialmoney/node_modules/___jade.npm
+ERR! code EPERM
+ERR! message EPERM, operation not permitted '/mnt/hgfs/srv/node/socialmoney/node_modules/___jade.npm'
+ERR! errno {}
+verbose exit [ 1, true ]

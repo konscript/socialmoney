@@ -13,9 +13,6 @@ var path = require('path');
 */
 GLOBAL.app = app;
 
-
-
-
 /**
 * Retrieve Command Line Arguments
 * [0] process : String 'node'
@@ -33,11 +30,10 @@ var args = process.argv;
 var port = args[2] ? args[2] : 3000;
 
 var checkAuth = function(req, res, next) {
-    console.log(path.extname(req.url));
 
     // TODO: make all static files publicly available. Below is a lame fix.
     var publicRoutes = [
-        '/users/login',
+        '/api/users/login',
         '/'
     ];
 
@@ -51,10 +47,16 @@ var checkAuth = function(req, res, next) {
     if( req.session.user_id || _.include(publicRoutes, req.url) || _.include(publicExt, path.extname(req.url)) ){
         next();
     } else {
-        res.statusCode = 403;
-        res.json({status: "not logged in", session: req.session});
+        req.session.user_id = 3;
+        next();
+        // res.statusCode = 403;
+        // res.json({status: "not logged in", session: req.session});
     }
 };
+
+
+// database
+GLOBAL.db = require('./server/database.js')();
 
 // Configuration
 app.configure(function() {
@@ -64,7 +66,7 @@ app.configure(function() {
 
     // session handling in memorystore
     var MemoryStore = require('connect').session.MemoryStore;
-    app.use(express.session({ secret: "verySecret!", store: new MemoryStore({ reapInterval:  60000 * 10 })}));
+    app.use(express.session({ secret: GLOBAL.fb.secret, store: new MemoryStore({ reapInterval:  60000 * 10 })}));
 
     // check login state before routing
     app.use(checkAuth);
@@ -83,20 +85,20 @@ app.configure('production', function() {
     app.use(express.errorHandler());
 });
 
-// database
-GLOBAL.db = require('./server/database.js')();
-
 // models
 GLOBAL.models = require('./server/models.js').init();
 
 // resources
 GLOBAL.resources = {};
+GLOBAL.resources.mixed = require('./server/resources/mixed.js');
 GLOBAL.resources.user = require('./server/resources/user.js');
 GLOBAL.resources.transaction = require('./server/resources/transaction.js');
+GLOBAL.resources.subtransaction = require('./server/resources/subtransaction.js');
 
 
 // routes
 GLOBAL.routes = require('./server/routes.js').init();
+
 
 // HTTP Server
 app.listen(port);
