@@ -39,7 +39,7 @@ models.Transactions = Backbone.RelationalModel.extend({
     idAttribute: 'id',
     relations: [{
         type: Backbone.HasMany,
-        key: 'SubTransactions',
+        key: 'subtransactions',
         relatedModel: 'models.SubTransactions',
         reverseRelation: {
             key: 'transactionId',

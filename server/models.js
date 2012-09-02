@@ -73,20 +73,36 @@ module.exports = {
       }, {
         classMethods: {
           findRelatedByUserId: function(user_id, callback) {
-            var sql = "SELECT t.*, s.id AS subtransactionId, s.* FROM  SubTransactions s LEFT JOIN Transactions t ON t.id = s.TransactionId WHERE s.PayerId = " + user_id + " OR s.BorrowerId = " + user_id;
+            var sql = "SELECT s.*, t.*, s.id AS subtransactionId FROM  SubTransactions s LEFT JOIN Transactions t ON t.id = s.TransactionId WHERE s.PayerId = " + user_id + " OR s.BorrowerId = " + user_id;
             instance.query(sql, models.Transaction).success(function(transactions) {
 
+              var transactions_new = [];
+
               _.each(transactions, function(transaction) {
-                transaction.substransaction = {
+
+                var transaction_new = transaction.toJSON();
+
+                // sey subtranaction
+                 transaction_new.subtransactions = {
                   "id": transaction.subtransactionId,
                   "amount": transaction.amount,
                   "accepted": transaction.accepted,
                   "payerId": transaction.payerId,
                   "borrowerId": transaction.borrowerId
                 };
+
+                // remove
+                delete transaction_new.subtransactionId;
+                delete transaction_new.amount;
+                delete transaction_new.accepted;
+                delete transaction_new.payerId;
+                delete transaction_new.borrowerId;
+                delete transaction_new.transactionId;
+
+                transactions_new.push(transaction_new);
               });
 
-              callback(transactions);
+              callback(transactions_new);
             }).error(function(error) {
               callback(error);
             });

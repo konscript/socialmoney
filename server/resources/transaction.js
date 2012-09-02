@@ -78,7 +78,7 @@ module.exports = {
             res.json(data);
           });
         }else{
-          res.json({});
+          res.json({"status": "numberOfSubTransactions is zero"});
         }
       });
     });

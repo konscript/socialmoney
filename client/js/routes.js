@@ -20,13 +20,11 @@ var AppRouter = Backbone.Router.extend({
 
     // transactions
     SingleTransaction: function(transactionId){
-        //this.changePage(new views.SingleTransaction({transactionId: transactionId}));
+        this.changePage(new views.SingleTransaction({transactionId: transactionId}));
     },
 
     IndexTransaction: function(){
-        var transaction_collection = new collections.Transactions();
-        var transaction_list_view = new views.SingleTransaction({el: $('#main'), model: transaction_collection });
-        transaction_collection.fetch();
+        this.changePage(new views.IndexTransaction());
     },
 
     // frontpage

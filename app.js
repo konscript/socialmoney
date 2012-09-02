@@ -43,12 +43,13 @@ var checkAuth = function(req, res, next) {
         ".html"
     ];
 
+    // TODO: remove the hardcoded user id
+    req.session.user_id = 3;
+
     // access granted if session id availbable OR route is public OR extension is allowed
     if( req.session.user_id || _.include(publicRoutes, req.url) || _.include(publicExt, path.extname(req.url)) ){
         next();
     } else {
-        req.session.user_id = 3;
-        next();
         // res.statusCode = 403;
         // res.json({status: "not logged in", session: req.session});
     }

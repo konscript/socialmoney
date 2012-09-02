@@ -6,8 +6,10 @@ views.SingleTransaction = Backbone.View.extend({
     
     render: function() {
 
-        var transaction = new models.Transaction({id: this.options.transactionId});
+        var transaction = new models.Transactions({id: this.options.transactionId});
         transaction.fetch({async: false});
+
+
 
         // load template async
         this.loadTemplate();
