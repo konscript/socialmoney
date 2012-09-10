@@ -1,28 +1,29 @@
 views.IndexTransaction = Backbone.View.extend({
 
-  id: "IndexTransaction",
-  el: $('#main'),
+  name: "IndexTransaction",
+  el: "#main",
 
-  initialize: function() {},
 
-  render: function() {
-    var self = this;
-    var transaction_collection = new collections.Transactions();
-    transaction_collection.fetch({async: false});
+  initialize: function() {
 
-    // load template async
-    this.loadTemplate();
-
-    this.on('templateLoaded', function() {
-
-      transaction_collection.each(function(transaction) {
-        var renderedItem = self.template(transaction.toJSON());
-        var $renderedItem = $(renderedItem);
-
-        $('#main').append($renderedItem);
-      });
-
-      return this;
+    this.collection = new collections.Transactions();
+    this.collection.fetch({
+      async: false
     });
+
+  },
+
+  afterRender: function() {
+    var self = this;
+    $(self.el).empty();
+
+    this.collection.each(function(transaction) {
+      $(self.el).append(
+        $(self.template(transaction.toJSON()))
+      );
+    });
+
+    return this;
+
   }
 });

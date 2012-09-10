@@ -1,0 +1,283 @@
+/**
+ * Top handler for the public-facing site
+ */
+/**
+ * Base (_base.scss)
+ * Partial for initializing common variables, importing utilities and setting up the framework
+ */
+/*********************************************************
+ * COMMON VARIABLES
+ *********************************************************/
+/*********************************************************
+ * FONT FACE IMPORTS
+ *********************************************************/
+/*********************************************************
+ * GENERAL
+ *********************************************************/
+/* line 67, ../scss/utilities/_Base.scss */
+html {
+  height: 100%;
+}
+
+/* line 69, ../scss/utilities/_Base.scss */
+body {
+  -webkit-text-size-adjust: 100%;
+  font-size: 13px;
+  font-family: 'TitilliumText22LRegular';
+  margin: 0;
+  padding-top: 0;
+  line-height: 1.3em;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+/**
+ * Grid (_grid.scss)
+ * Build with inspiration from the Less Framework (http://lessframework.com/)
+ * Assumptions: 1080px site width, 45px columns, 30px columns (inner), 15px gutters, 24 columns in total
+ */
+/*********************************************************
+ * GENERAL GRID
+ *********************************************************/
+/*********************************************************
+ * FIXED WIDTH
+ *********************************************************/
+/*********************************************************
+ * FLUID WIDTH (WIP)
+ *********************************************************/
+/**
+ * Layouts (layouts.scss)
+ */
+/* line 5, ../scss/utilities/_Layouts.scss */
+.layout-sidebar {
+  width: 165px;
+  display: block;
+  margin-right: 0;
+  float: left;
+  margin-right: 15px;
+}
+
+/* line 9, ../scss/utilities/_Layouts.scss */
+.layout-main {
+  width: 885px;
+  display: block;
+  margin-right: 0;
+  float: left;
+}
+
+/**
+ * Buttons (buttons.scss)
+ */
+/* line 42, ../scss/interface/_Buttons.scss */
+.ui-button.white {
+  display: block;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 7px 10px;
+  color: white;
+  cursor: pointer;
+  background-color: #4193d0;
+  border: 1px solid #3187c6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6aaada), color-stop(100%, #4193d0));
+  background-image: -webkit-linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  background-image: -moz-linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  background-image: -o-linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  background-image: linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  -webkit-box-shadow: inset 0 1px 0 0 #7eb6df;
+  -moz-box-shadow: inset 0 1px 0 0 #7eb6df;
+  box-shadow: inset 0 1px 0 0 #7eb6df;
+  text-decoration: none;
+}
+/* line 32, ../scss/interface/_Buttons.scss */
+.ui-button.white:hover {
+  background-color: #93c1e4;
+  border: 1px solid #2c79b2;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4193d0), color-stop(100%, #2c79b2));
+  background-image: -webkit-linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+  background-image: -moz-linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+  background-image: -o-linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+  background-image: linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+}
+/* line 43, ../scss/interface/_Buttons.scss */
+.ui-button {
+  display: block;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 7px 10px;
+  color: white;
+  cursor: pointer;
+  background-color: #4193d0;
+  border: 1px solid #3187c6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6aaada), color-stop(100%, #4193d0));
+  background-image: -webkit-linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  background-image: -moz-linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  background-image: -o-linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  background-image: linear-gradient(top, #6aaada 0%, #4193d0 100%);
+  -webkit-box-shadow: inset 0 1px 0 0 #7eb6df;
+  -moz-box-shadow: inset 0 1px 0 0 #7eb6df;
+  box-shadow: inset 0 1px 0 0 #7eb6df;
+  text-decoration: none;
+}
+/* line 32, ../scss/interface/_Buttons.scss */
+.ui-button:hover {
+  background-color: #93c1e4;
+  border: 1px solid #2c79b2;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4193d0), color-stop(100%, #2c79b2));
+  background-image: -webkit-linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+  background-image: -moz-linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+  background-image: -o-linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+  background-image: linear-gradient(top, #4193d0 0%, #2c79b2 100%);
+}
+/* line 44, ../scss/interface/_Buttons.scss */
+.ui-button.red {
+  display: block;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 7px 10px;
+  color: white;
+  cursor: pointer;
+  background-color: #d04942;
+  border: 1px solid #b03e38;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fc5850), color-stop(100%, #d04942));
+  background-image: -webkit-linear-gradient(top, #fc5850 0%, #d04942 100%);
+  background-image: -moz-linear-gradient(top, #fc5850 0%, #d04942 100%);
+  background-image: -o-linear-gradient(top, #fc5850 0%, #d04942 100%);
+  background-image: linear-gradient(top, #fc5850 0%, #d04942 100%);
+  -webkit-box-shadow: inset 0 1px 0 0 #fc7069;
+  -moz-box-shadow: inset 0 1px 0 0 #fc7069;
+  box-shadow: inset 0 1px 0 0 #fc7069;
+  text-decoration: none;
+}
+/* line 32, ../scss/interface/_Buttons.scss */
+.ui-button.red:hover {
+  background-color: #fd8882;
+  border: 1px solid #9d3732;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #d04942), color-stop(100%, #9d3732));
+  background-image: -webkit-linear-gradient(top, #d04942 0%, #9d3732 100%);
+  background-image: -moz-linear-gradient(top, #d04942 0%, #9d3732 100%);
+  background-image: -o-linear-gradient(top, #d04942 0%, #9d3732 100%);
+  background-image: linear-gradient(top, #d04942 0%, #9d3732 100%);
+}
+/* line 48, ../scss/interface/_Buttons.scss */
+.ui-button.small {
+  padding: 3px 5px;
+}
+/* line 49, ../scss/interface/_Buttons.scss */
+.ui-button {
+  padding: 7px 10px;
+}
+/* line 50, ../scss/interface/_Buttons.scss */
+.ui-button.large {
+  padding: 15px 25px;
+}
+/* line 54, ../scss/interface/_Buttons.scss */
+.ui-button.floated {
+  float: left;
+}
+/* line 55, ../scss/interface/_Buttons.scss */
+.ui-button.spaced {
+  margin: 15px 15px 15px 0;
+}
+
+@-webkit-keyframes shake {
+  /* line 60, ../scss/interface/_Buttons.scss */
+  0%, 100% {
+    -webkit-transform: translateX(0);
+  }
+
+  /* line 61, ../scss/interface/_Buttons.scss */
+  30%, 50%, 70% {
+    -webkit-transform: translateX(-3px);
+  }
+
+  /* line 62, ../scss/interface/_Buttons.scss */
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateX(3px);
+  }
+}
+
+@-moz-keyframes shake {
+  /* line 65, ../scss/interface/_Buttons.scss */
+  0%, 100% {
+    -moz-transform: translateX(0);
+  }
+
+  /* line 66, ../scss/interface/_Buttons.scss */
+  10%, 30%, 50%, 70%, 90% {
+    -moz-transform: translateX(-3px);
+  }
+
+  /* line 67, ../scss/interface/_Buttons.scss */
+  20%, 40%, 60%, 80% {
+    -moz-transform: translateX(3px);
+  }
+}
+
+@-o-keyframes shake {
+  /* line 70, ../scss/interface/_Buttons.scss */
+  0%, 100% {
+    -o-transform: translateX(0);
+  }
+
+  /* line 71, ../scss/interface/_Buttons.scss */
+  10%, 30%, 50%, 70%, 90% {
+    -o-transform: translateX(-3px);
+  }
+
+  /* line 72, ../scss/interface/_Buttons.scss */
+  20%, 40%, 60%, 80% {
+    -o-transform: translateX(3px);
+  }
+}
+
+@keyframes shake {
+  /* line 75, ../scss/interface/_Buttons.scss */
+  0%, 100% {
+    transform: translateX(0);
+  }
+
+  /* line 76, ../scss/interface/_Buttons.scss */
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-3px);
+  }
+
+  /* line 77, ../scss/interface/_Buttons.scss */
+  20%, 40%, 60%, 80% {
+    transform: translateX(3px);
+  }
+}
+
+/* line 3, ../scss/public/_Transactions.scss */
+.template-NewTransaction input {
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+/* line 12, ../scss/public/_Transactions.scss */
+.template-NewTransaction h1 {
+  display: none;
+}
+/* line 18, ../scss/public/_Transactions.scss */
+.template-NewTransaction ul.ui-autocomplete li.ui-menu-item img {
+  float: left;
+  margin-right: 10px;
+}
+/* line 23, ../scss/public/_Transactions.scss */
+.template-NewTransaction ul.ui-autocomplete li.ui-menu-item a {
+  line-height: 50px;
+}

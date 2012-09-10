@@ -132,26 +132,18 @@ module.exports = {
         }
       }),
 
-      'Balance': instance.define('SubTransaction', {
-        id: {
-          type: Sequelize.INTEGER,
-          autoIncrement: true,
-          primaryKey: true
+      'Balance': instance.define('Balance', {
+        payerId: {
+          type: Sequelize.INTEGER
         },
-        amount: {
-          type: Sequelize.INTEGER,
-          validate: {
-            isInt: true,
-            min: 0
-          }
+        borrowerId: {
+          type: Sequelize.INTEGER
         },
-        accepted: {
-          type: Sequelize.BOOLEAN,
-          defaultValue: false,
-          validate: {
-            notNull: true
-          }
+        balance: {
+          type: Sequelize.INTEGER
         }
+      }, {
+        timestamps: false
       }),
 
       'Group': instance.define('Group', {
@@ -246,8 +238,8 @@ module.exports = {
       UNION \
       SELECT * FROM BalanceTo; \
       \
-      DROP TABLE IF EXISTS Balance; \
-      CREATE OR REPLACE VIEW Balance AS \
+      DROP TABLE IF EXISTS Balances; \
+      CREATE OR REPLACE VIEW Balances AS \
       SELECT payerId, borrowerId, sum(balance) as balance FROM BalanceUnion GROUP BY payerId, borrowerId;");
 
     // create all tables in database if they do not exist

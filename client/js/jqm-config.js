@@ -4,5 +4,4 @@ $(document).bind("mobileinit", function () {
     $.mobile.linkBindingEnabled = false;
     $.mobile.hashListeningEnabled = false;
     $.mobile.pushStateEnabled = false;
-    // $.mobile.pageContainer = "div#main";
 });

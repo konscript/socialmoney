@@ -1,0 +1,11 @@
+/**
+ * Layouts (layouts.scss)
+ */
+
+.layout-sidebar {
+	@include column(4);
+}
+
+.layout-main {
+	@include column(20, true);
+}

@@ -1,24 +1,28 @@
 views.SingleTransaction = Backbone.View.extend({
 
-    id: "SingleTransaction",
-
-    initialize: function() {},
-    
-    render: function() {
-
-        var transaction = new models.Transactions({id: this.options.transactionId});
-        transaction.fetch({async: false});
+  name: "SingleTransaction",
+  el: "#main",
 
 
+  initialize: function() {
+    this.model = new models.Transactions({
+      id: this.options.transactionId
+    });
+    this.model.fetch({
+      async: false
+    });
+  },
 
-        // load template async
-        this.loadTemplate();
+  afterRender: function() {
+    var self = this;
 
-        this.on('templateLoaded', function() {
+    this.model.getNamesFromFacebook(function(transaction){
 
-          var renderedContent = this.template(transaction.toJSON());
-          $('#main').html(renderedContent);
-          return this;
-        });
-    }
+      self.$el.html(
+        self.template(transaction)
+      );
+
+      return self;
+    });
+  }
 });

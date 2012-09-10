@@ -1,0 +1,90 @@
+/**
+ * Grid (_grid.scss)
+ * Build with inspiration from the Less Framework (http://lessframework.com/)
+ * Assumptions: 1080px site width, 45px columns, 30px columns (inner), 15px gutters, 24 columns in total
+ */
+
+/*********************************************************
+ * GENERAL GRID
+ *********************************************************/
+
+// Center using auto margins
+@mixin center() {
+  margin: 0 auto;
+  display: block;
+  float: none;
+}
+
+@mixin wide() {
+  position: relative;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+/*********************************************************
+ * FIXED WIDTH
+ *********************************************************/
+
+// Total column width
+$column-width: $layout-column + $layout-gutter;
+
+// Built a wrapper for the grid (with outer padding)
+@mixin grid($columns, $padding: true) {
+  position: relative;
+  @include column($columns, true, false);
+
+  @if $padding == true {
+    //@include grid-padding($columns);
+    //padding-left: $layout-gutter;
+    //padding-right: $layout-gutter;    
+  }
+}
+
+// Inserts a column width and gutter margin
+@mixin column($columns, $last: false, $float: true, $crop: 0) {
+  @include column-width($columns, $crop);
+  display: block;
+  margin-right: 0;
+  @if $float == true {
+    float: left;
+  }
+  @if $last != true {
+    margin-right: $layout-gutter;
+  }
+}
+
+// The width of a given number of columns
+@mixin column-width($columns, $crop: 0) {
+  width: ($layout-column * $columns) + ($layout-gutter * ($columns - 1)) - $crop;
+}
+
+// Sets the width AND height for thumb style sizes (4:3 ratio)
+@mixin column-thumb($columns, $crop: 0) {
+  //@include column-width($columns);
+  width: ($layout-column * $columns) + ($layout-gutter * ($columns - 1)) - $crop;
+  height: (floor((($layout-column * $columns) + ($layout-gutter * ($columns - 1))) / 1.333)) - floor($crop / 1.333);
+}
+
+
+/*********************************************************
+ * FLUID WIDTH (WIP)
+ *********************************************************/
+
+// Inserts a column width and gutter margin
+@mixin fluid-column($columns, $last: false, $float: true, $crop: 0) {
+  @include column-width($columns, $crop);
+  display: block;
+  margin-right: 0;
+  @if $float == true {
+    float: left;
+  }
+  @if $last != true {
+    margin-right: $layout-gutter;
+  }
+}
+
+// The width of a given number of columns
+@mixin fluid-column-width($columns, $crop: 0) {
+  width: ($layout-column * $columns) + ($layout-gutter * ($columns - 1)) - $crop;
+}

@@ -1,0 +1,80 @@
+/**
+ * Base (_base.scss)
+ * Partial for initializing common variables, importing utilities and setting up the framework
+ */
+
+// Load compass tools, utilities and blueprint modules
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/opacity";
+@import "compass/css3/images";
+@import "compass/css3/font-face";
+@import "compass/css3/transition";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/text-shadow";
+
+
+/*********************************************************
+ * COMMON VARIABLES
+ *********************************************************/
+
+// Layout defaults
+$layout-container:		1080px;
+$layout-column:			30px;
+$layout-gutter:			15px;
+$layout-colcount:		24;
+
+$fluid-container:		100%; 					// 1080px;
+$fluid-column:			(100% / 24) / 3 * 2; 	// 30px;
+$fluid-gutter:			(100% / 24) / 3; 		// 15px;
+$fluid-colcount:		24;
+
+// Typography defaults
+$typo-family:			helvetica, arial, sans-serif;
+$typo-family_mono:		'courier new', monospace, serif;
+$typo-lineheight: 		1.5em;
+$typo-size: 			14px;
+$typo-size_small:		12px;
+
+// Color defaults
+$color-blue:			#4193D0; //#4394D0;
+$color-blue_light:		lighten($color-blue, 10%);
+$color-blue_dark:		darken($color-blue, 10%);
+$color-blue_verylight:	#e5eef3;
+
+$color-white: 			#fff;
+$color-white_dark: 		#f3f3f3;
+
+$color-gray:			#808080;
+$color-gray_dark:		#292929;
+$color-gray_light:		#d4d4d4;
+
+$color-red:				#D04942; //#FBB03D;
+$color-red_dark:		#9D3732;
+$color-red_light:		#FC5850;
+
+
+/*********************************************************
+ * FONT FACE IMPORTS
+ *********************************************************/
+
+
+
+/*********************************************************
+ * GENERAL
+ *********************************************************/
+
+html { height: 100%; }
+
+body {
+    -webkit-text-size-adjust: 100%; // Stops Mobile Safari from auto-adjusting font-sizes
+    font-size: 13px;
+    font-family: 'TitilliumText22LRegular';
+    margin: 0;
+    padding-top: 0;
+    line-height: 1.3em;
+    overflow-y:scroll;
+    height: 100%;
+
+
+}

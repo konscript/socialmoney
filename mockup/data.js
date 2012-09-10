@@ -1,1 +1,0 @@
-[{"label": "Søren Louv-Jansen", "userid": 1337},{"label": "Sara Wingstrand", "userid": 34},{"label": "Sille Marie", "userid": "24"}]

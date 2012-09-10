@@ -8,14 +8,6 @@
 var Transaction = GLOBAL.models.Transaction;
 var SubTransaction = GLOBAL.models.SubTransaction;
 
-var filterAllowedFields = function(allowedFields, model, data){
-  _.each(allowedFields, function(field) {
-      if(data[field]){
-        model[field] = data[field];
-      }
-  });
-  return model;
-};
 
 // route parameters: req.params
 // GET: req.query
@@ -41,17 +33,17 @@ module.exports = {
     Transaction.create(data, allowedFields).success(function(transaction) {
 
       // insert associated data
-      if(data.subtransactions.length > 0){
+      if(data.subtransactions.constructor == Array && data.subtransactions.length > 0){
         _.each(data.subtransactions, function(subtransaction) {
+
           var request = req;
           request.body = subtransaction;
           request.body.transactionId = transaction.id;
           GLOBAL.resources.subtransaction.create(request);
         });
-        res.send(transaction);
-      }else{
-        res.send(transaction);
       }
+
+      res.send(transaction);
     }).error(function(error) {
         res.send("error" + error);
     });
@@ -86,12 +78,10 @@ module.exports = {
 
   update: function(req, res) {
     var data = req.body;
-    var allowedFields = ['title', 'description', 'totalAmount'];
 
     Transaction.find(parseInt(req.params.transaction, 10)).success(function(transaction) {
       if(transaction){
-        transaction = filterAllowedFields(allowedFields, transaction, data);
-        transaction.save(allowedFields).success(function() {
+        transaction.save(['title', 'description', 'totalAmount']).success(function() {
           res.send('updated');
         });
       }else{

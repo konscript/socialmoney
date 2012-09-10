@@ -1,0 +1,78 @@
+/**
+ * Buttons (buttons.scss)
+ */
+
+// deprecated fallback for now, use @extend below instead
+@mixin button($style) {
+	display: block;
+	text-align: center;
+	@include border-radius(3px);
+	//background: $color-blue;
+	padding: 7px 10px;
+	color: $color-white;
+    cursor: pointer;
+
+    // default to blue
+    $button-color: $color-blue;
+    $button-color-dark: $color-blue_dark;
+    $button-color-light: $color-blue_light;
+
+	@if $style == "red" {
+        $button-color: $color-red;
+        $button-color-dark: $color-red_dark;
+        $button-color-light: $color-red_light;
+    }
+
+	background-color: $button-color;
+	border: 1px solid lighten($button-color-dark, 5%);
+	@include background-image(linear-gradient(top, $button-color-light 0%, $button-color 100%));
+	@include single-box-shadow(lighten($button-color-light, 5%), 0, 1px, 0, 0, true);
+    text-decoration: none;
+
+	&:hover {
+		background-color: lighten($button-color-light, 10%);
+		border: 1px solid $button-color-dark;
+		@include background-image(linear-gradient(top, $button-color 0%, $button-color-dark 100%));
+	}
+}
+
+.ui-button {
+    
+    // colors
+    &.white {   @include button("white"); }
+    &.blue {    @include button("blue"); }
+    &.red {    @include button("red"); }
+    @extend .ui-button.blue; // default
+    
+    // sizes
+    &.small {   padding: 3px 5px; }
+    &.medium {  padding: 7px 10px; }
+    &.large {   padding: 15px 25px; }
+    @extend .ui-button.medium; // default
+    
+    // positioning
+    &.floated { float: left; }
+    &.spaced { margin: 15px 15px 15px 0; }
+}
+
+// for shake effect on disabled buttons
+@-webkit-keyframes shake {
+    0%, 100% {-webkit-transform: translateX(0);}
+    30%, 50%, 70% {-webkit-transform: translateX(-3px);}
+    20%, 40%, 60%, 80% {-webkit-transform: translateX(3px);}
+}
+@-moz-keyframes shake {
+    0%, 100% {-moz-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-moz-transform: translateX(-3px);}
+    20%, 40%, 60%, 80% {-moz-transform: translateX(3px);}
+}
+@-o-keyframes shake {
+    0%, 100% {-o-transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {-o-transform: translateX(-3px);}
+    20%, 40%, 60%, 80% {-o-transform: translateX(3px);}
+}
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-3px);}
+    20%, 40%, 60%, 80% {transform: translateX(3px);}
+}

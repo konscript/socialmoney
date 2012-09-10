@@ -7,15 +7,6 @@
 
 var SubTransaction = GLOBAL.models.SubTransaction;
 
-var filterAllowedFields = function(allowedFields, model, data){
-  _.each(allowedFields, function(field) {
-      if(data[field]){
-        model[field] = data[field];
-      }
-  });
-  return model;
-};
-
 // route parameters: req.params
 // GET: req.query
 // POST: req.body
@@ -34,8 +25,7 @@ module.exports = {
   },
 
   create: function(req, res) {
-    // TODO: lav check på, om borrowerId, er en selv eller ens ven
-
+    // TODO: lav check (validator) på, om borrowerId, er en selv eller ens ven
     var data = req.body;
     data.payerId = req.session.user_id;
     var allowedFields = ['amount', 'borrowerId', 'transactionId', 'payerId'];
@@ -57,12 +47,10 @@ module.exports = {
 
   update: function(req, res) {
     var data = req.body;
-    var allowedFields = ['title', 'description', 'totalAmount'];
 
     SubTransaction.find(parseInt(req.params.subtransaction, 10)).success(function(subtransaction) {
       if(subtransaction){
-        subtransaction = filterAllowedFields(allowedFields, subtransaction, data);
-        subtransaction.save(allowedFields).success(function() {
+        subtransaction.save(['title', 'description', 'totalAmount']).success(function() {
           res.send('updated');
         });
       }else{

@@ -31,27 +31,12 @@ var port = args[2] ? args[2] : 3000;
 
 var checkAuth = function(req, res, next) {
 
-    // TODO: make all static files publicly available. Below is a lame fix.
-    var publicRoutes = [
-        '/api/users/login',
-        '/'
-    ];
-
-    var publicExt = [
-        ".css",
-        ".js",
-        ".html"
-    ];
-
-    // TODO: remove the hardcoded user id
-    req.session.user_id = 3;
-
     // access granted if session id availbable OR route is public OR extension is allowed
-    if( req.session.user_id || _.include(publicRoutes, req.url) || _.include(publicExt, path.extname(req.url)) ){
+    if( req.session.user_id || req.url.indexOf("/api/") === -1 ){
         next();
     } else {
-        // res.statusCode = 403;
-        // res.json({status: "not logged in", session: req.session});
+        res.statusCode = 403;
+        res.json({status: "not logged in", session: req.session});
     }
 };
 
@@ -91,7 +76,7 @@ GLOBAL.models = require('./server/models.js').init();
 
 // resources
 GLOBAL.resources = {};
-GLOBAL.resources.mixed = require('./server/resources/mixed.js');
+GLOBAL.resources.dashboard = require('./server/resources/dashboard.js');
 GLOBAL.resources.user = require('./server/resources/user.js');
 GLOBAL.resources.transaction = require('./server/resources/transaction.js');
 GLOBAL.resources.subtransaction = require('./server/resources/subtransaction.js');

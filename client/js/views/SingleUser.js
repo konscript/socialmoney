@@ -1,24 +1,26 @@
 views.SingleUser = Backbone.View.extend({
 
-    id: "SingleUser",
+    name: "SingleUser",
+    el: "#main",
 
-    //since this template will render inside a div, we don't need to specify a tagname
-    initialize: function() {
-    },
-    
-    render: function() {
-
-        var user = new models.User({id: this.options.userId});
-        user.fetch({async: false});
-
-        // load template async
-        this.loadTemplate();
-
-        this.on('templateLoaded', function() {
-
-          var renderedContent = this.template(user.toJSON());
-          $('#main').html(renderedContent);
-          return this;
+    initialize: function() {$()
+        // models
+        this.model = new models.Users({
+            id: this.options.userId
         });
+
+        this.model.fetch({
+            async: false
+        });
+    },
+
+    render: function() {
+        return this;
+    },
+
+    afterRender: function() {
+        var renderedContent = this.template(this.model.toJSON());
+        $("#main").html(renderedContent);
+        return this;
     }
 });
